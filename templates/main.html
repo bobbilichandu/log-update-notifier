@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tail </title>
+	<style>
+		body {font-family: monospace;}
+		p{ margin: 0;}
+		ul{padding: 0;}
+		li{list-style:none; padding: 0; margin: 0;}
+	</style>
+</head>
+<body>
+<ul id="logger">
+	
+</ul>
+<script>
+	const socket = new WebSocket('ws://localhost:8000/ws/{{filename}}');
+	var log = document.getElementById('logger')
+	socket.onopen = function (event) {
+		socket.send_text("Hi")
+	}
+  	// Listen for messages
+	  /*
+	socket.addEventListener('message', function (event) {
+		var text = document.createTextNode(event.data)
+		var li = document.createElement("li")
+		li.appendChild(text)
+		log.prepend(li)
+	});	*/	
+	socket.onmessage = function (event) {
+		var text = document.createTextNode(event.data) 
+		var li = document.createElement("li")
+		li.appendChild(text)
+		log.prepend(li)
+	}
+</script>
+</body>
+</html>
