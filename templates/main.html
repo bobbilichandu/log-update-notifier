@@ -16,25 +16,20 @@
 	
 </ul>
 <script>
+	function closeIt() {
+		console.log("closing the socket");
+		socket.close();
+	}
 	const socket = new WebSocket('ws://localhost:8000/ws/{{filename}}');
 	var log = document.getElementById('logger')
-	socket.onopen = function (event) {
-		socket.send_text("Hi")
-	}
-  	// Listen for messages
-	  /*
 	socket.addEventListener('message', function (event) {
 		var text = document.createTextNode(event.data)
 		var li = document.createElement("li")
 		li.appendChild(text)
 		log.prepend(li)
-	});	*/	
-	socket.onmessage = function (event) {
-		var text = document.createTextNode(event.data) 
-		var li = document.createElement("li")
-		li.appendChild(text)
-		log.prepend(li)
-	}
+	});
+	window.onbeforeunload = closeIt;
+	window.onreload = closeIt;
 </script>
 </body>
 </html>
