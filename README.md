@@ -130,3 +130,10 @@ filename_prefix is nothing but the prefix to ".log" in the filename
 | file3.txt | NOT SUPPORTED   |
 
 Each client will create a websocket connection with the server and updates in the logs will be forwarded to all the corresponding clients.
+
+**Resources & References**
+
+1. [FastAPI websocket documentation](https://fastapi.tiangolo.com/advanced/websockets/)
+2. [Tail server with wsgi and sockets](https://gist.github.com/mariocesar/7c4d825fe64957a51c6695e4b5176050)
+3. [how to make FastAPI server completely async](https://github.com/tiangolo/fastapi/issues/3265)
+    Above issue helped me figure on how to use async and await in FastAPI.
